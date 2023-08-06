@@ -1,6 +1,5 @@
-{% extends 'hospital/patient_base.html' %}
-{% load widget_tweaks %}
-{% block content %}
+{% extends 'hospital/patient_base.html' %} {% load widget_tweaks %} {% block
+content %}
 
 <head>
   <style media="screen">
@@ -42,11 +41,15 @@
     }
   </style>
 
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link
+    href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css"
+  />
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<br><br>
+<br /><br />
 {% if message %}
 <script>
   var a = "{{message}}";
@@ -55,8 +58,7 @@
 
 {% endif %}
 
-
-<!------ add appointment page by patient(sumit)  ---------->
+<!------ add appointment page by patient  ---------->
 <form method="post">
   {% csrf_token %}
   <div class="container register-form">
@@ -68,24 +70,19 @@
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
-              {% render_field appointmentForm.description class="form-control" placeholder="Description" %}
+              {% render_field appointmentForm.description class="form-control"
+              placeholder="Description" %}
             </div>
             <div class="form-group">
-              {% render_field appointmentForm.doctorId class="form-control" placeholder="doctor" %}
+              {% render_field appointmentForm.doctorId class="form-control"
+              placeholder="doctor" %}
             </div>
-            
-
-
-
           </div>
-
         </div>
         <button type="submit" class="btnSubmit">Book</button>
       </div>
     </div>
   </div>
 </form>
-
-
 
 {% endblock content %}

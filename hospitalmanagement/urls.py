@@ -35,6 +35,12 @@ urlpatterns = [
         template_name='hospital/index.html'), name='logout'),
 
 
+    path('admin_doctor/', views.admin_doctor_view, name='admin_doctor'),
+    path('admin_patient/', views.admin_patient_view, name='admin_patient'),
+    path('admin_appointment/', views.admin_appointment_view,
+         name='admin_appointment'),
+
+
     path('admin-dashboard', views.admin_dashboard_view, name='admin-dashboard'),
 
     path('admin-doctor', views.admin_doctor_view, name='admin-doctor'),

@@ -140,4 +140,4 @@ EMAIL_HOST_USER = 'libertycity2468@gmail.com' # this email will be used to send 
 EMAIL_HOST_PASSWORD = 'ohagkxgajaktftqd' 
 # now sign in with your host gmail account in your browser
 # this process is required because google blocks apps authentication by default
-#EMAIL_RECEIVING_USER = ['libertycity2468@gmail.com'] # email on which you will receive messages sent from website
+EMAIL_RECEIVING_USER = ['libertycity2468@gmail.com'] # email on which you will receive messages sent from website

@@ -146,32 +146,39 @@
   <body>
     <div class="market-updates">
       <div class="col-md-4 market-update-gd">
-        <div class="market-update-block clr-block-1">
-          <div class="col-md-8 market-update-left">
-            <h3>{{doctorcount}}</h3>
-            <h4>Total Doctor</h4>
-            <p>Approval Required : {{pendingdoctorcount}}</p>
+        <a href="/admin_doctor"> <!-- Add <a> tag with the desired URL -->
+          <div class="market-update-block clr-block-1">
+            <div class="col-md-8 market-update-left">
+              <h3>{{doctorcount}}</h3>
+              <h4>Total Doctor</h4>
+              <p>Approval Required: {{pendingdoctorcount}}</p>
+            </div>
+            <div class="col-md-4 market-update-right">
+              <i class="fa fa-user-md"></i>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="col-md-4 market-update-right">
-            <i class="fa fa-user-md"></i>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+        </a> <!-- Close the <a> tag -->
+      </div>
       </div>
       <div class="col-md-4 market-update-gd">
-        <div class="market-update-block clr-block-2">
-          <div class="col-md-8 market-update-left">
-            <h3>{{patientcount}}</h3>
-            <h4>Total Patient</h4>
-            <p>Approve Patients : {{pendingpatientcount}}</p>
+        <a href="/admin_patient"> <!-- Add <a> tag with the desired URL -->
+          <div class="market-update-block clr-block-2">
+            <div class="col-md-8 market-update-left">
+              <h3>{{patientcount}}</h3>
+              <h4>Total Patient</h4>
+              <p>Approve Patients: {{pendingpatientcount}}</p>
+            </div>
+            <div class="col-md-4 market-update-right">
+              <i class="fa fa-user-o"></i>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class="col-md-4 market-update-right">
-            <i class="fa fa-user-o"></i>
-          </div>
-          <div class="clearfix"></div>
-        </div>
+        </a> <!-- Close the <a> tag -->
+      </div>
       </div>
       <div class="col-md-4 market-update-gd">
+        <a href="/admin_appointment">
         <div class="market-update-block clr-block-3">
           <div class="col-md-8 market-update-left">
             <h3>{{appointmentcount}}</h3>
@@ -183,6 +190,7 @@
           </div>
           <div class="clearfix"></div>
         </div>
+      </a>
       </div>
       <div class="clearfix"></div>
     </div>

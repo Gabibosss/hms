@@ -14,7 +14,7 @@ class AdminSigupForm(forms.ModelForm):
         }
 
 
-#for student related form
+#for doctor related form
 class DoctorUserForm(forms.ModelForm):
     class Meta:
         model=User
@@ -29,7 +29,7 @@ class DoctorForm(forms.ModelForm):
 
 
 
-#for teacher related form
+#for patient related form
 class PatientUserForm(forms.ModelForm):
     class Meta:
         model=User
@@ -69,8 +69,3 @@ class ContactusForm(forms.Form):
     Email = forms.EmailField()
     Message = forms.CharField(max_length=500,widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
 
-
-
-#Developed By : sumit kumar
-#facebook : fb.com/sumit.luv
-#Youtube :youtube.com/lazycoders

@@ -1,37 +1,109 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en" dir="ltr">
+  <head>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>OHMS</title>
+  </head>
 
-  <title>HMS - Django</title>
+  <body>
+    {% include "hospital/navbar.html" %}
+    <br /><br />
 
 
-</head>
-
-<body>
-
-  {% include "hospital/navbar.html" %}
-  <br><br>
-
-  <center>
-    <h3 class='alert alert-success'>Send Us Your Valuable Feedback !</h3>
-
-    <form method="POST">
-      <!-- Very Important csrf Token -->
-      {% csrf_token %}
-      <div class="form-group">
-        <p>
-        <h3>{{ form.as_p }}</h3>
-        </p>
-        <br>
-        <input type="submit" value="Send Message" class='btn btn-primary btn-lg'>
+    <section class="home-slider owl-carousel">
+      <div
+        class="slider-item bread-item"
+        style="background-image: url('images/bg_1.jpg')"
+        data-stellar-background-ratio="0.5"
+      >
+        <div class="overlay"></div>
+        <div class="container" data-scrollax-parent="true">
+          <div class="row slider-text align-items-end">
+            <div class="col-md-7 col-sm-12 ftco-animate mb-5">
+              <h1>Contact Us</h1>
+            </div>
+          </div>
+        </div>
       </div>
-    </form>
-  </center>
-  {% include "hospital/footer.html" %}
-</body>
+    </section>
 
+    <section class="ftco-section contact-section ftco-degree-bg">
+      <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+          <div class="col-md-12 mb-4">
+            <h2 class="h4">Contact Information</h2>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-md-3">
+            <p>
+              <span>Address:</span> KNUST Computer Science Final Year Project
+            </p>
+          </div>
+          <div class="col-md-3">
+            <p><span>Phone:</span> <a href="tel:0543473193">0543473193</a> / <a href="tel:0277657193">0277657139</p></a>
+          </div>
+          <div class="col-md-3">
+            <p>
+              <span>Email:</span>
+              <a href="mailto:libertycity2468@gmail.com">libertycity2468@gmail.com</a> / <a href="mailto:2">2</a>
+            </p>
+          </div>
+          <div class="col-md-3">
+            <p><span>Website</span> <a href="#">https:/ohms/care.com</a></p>
+          </div>
+        </div>
+        <div class="row block-9">
+          <div class="col-md-6 pr-md-5">
+            <form action="{% url 'contactus_view' %}" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="contact-name"
+                  class="form-control"
+                  placeholder="Your Name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="contact-email"
+                  class="form-control"
+                  placeholder="Your Email"
+                />
+              </div>
+              <div class="form-group">
+                <input type="text" name="contact-subject" class="form-control" placeholder="Subject" />
+              </div>
+              <div class="form-group">
+                <textarea
+                  name="contact-message"
+                  id=""
+                  cols="30"
+                  rows="7"
+                  class="form-control"
+                  placeholder="Message"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <input
+                  type="submit"
+                  value="Send Message"
+                  class="btn btn-primary py-3 px-5"
+                />
+              </div>
+            </form>
+          </div>
 
+        </div>
+      </div>
+    </section>
+
+    {% include "hospital/footer.html" %}
+  </body>
 </html>

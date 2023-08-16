@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from datetime import datetime,timedelta,date
 from django.conf import settings
 
-#views
+#Create views here
 def home_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect('afterlogin')
@@ -834,16 +834,26 @@ def aboutus_view(request):
     return render(request,'hospital/aboutus.html')
 
 def contactus_view(request):
-    sub = forms.ContactusForm()
+    contact_name = '' 
+    
     if request.method == 'POST':
-        sub = forms.ContactusForm(request.POST)
-        if sub.is_valid():
-            email = sub.cleaned_data['Email']
-            name=sub.cleaned_data['Name']
-            message = sub.cleaned_data['Message']
-            send_mail(str(name)+' || '+str(email),message,settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER, fail_silently = False)
-            return render(request, 'hospital/contactussuccess.html')
-    return render(request, 'hospital/contactus.html', {'form':sub})
+        contact_name = request.POST['contact-name']
+        contact_email = request.POST['contact-email']
+        contact_subject = request.POST['contact-subject']
+        contact_message = request.POST['contact-message']
+        
+        send_mail(
+        contact_name,
+        contact_subject,
+        contact_message,
+        [contact_email],
+        ['libertycity2468@gmail.com'],
+        )
+        return render(request, 'hospital/contactussuccess.html', {'contact_name': contact_name})
+        
+    return render(request, 'hospital/contactus.html', {'contact_name': contact_name})
+    
 
 
 #ADMIN RELATED VIEWS END
+

@@ -40,6 +40,12 @@ urlpatterns = [
     path('admin_appointment/', views.admin_appointment_view,
          name='admin_appointment'),
 
+    path('doctor_appointment/', views.doctor_appointment_view,
+         name='doctor_appointment'),
+    path('doctor_patient/', views.doctor_patient_view, name='doctor_patient'),
+    path('doctor_view_discharge_patient/', views.doctor_view_discharge_patient_view,
+         name='doctor_view_discharge_patient'),
+
 
     path('admin-dashboard', views.admin_dashboard_view, name='admin-dashboard'),
 

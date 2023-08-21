@@ -707,59 +707,31 @@ def patient_book_appointment_view(request):
         appointmentForm=forms.PatientAppointmentForm(request.POST)
         if appointmentForm.is_valid():
             print(request.POST.get('doctorId'))
-            desc=request.POST.get('description')
+            #desc=request.POST.get('description')
 
             doctor=models.Doctor.objects.get(user_id=request.POST.get('doctorId'))
-            
+                    
             if doctor.department == 'Cardiologist':
-                if 'heart' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
-
-            if doctor.department == 'Dermatologists':
-                if 'skin' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
-            if doctor.department == 'Emergency Medicine Specialists':
-                if 'fever' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
-            if doctor.department == 'Allergists/Immunologists':
-                if 'allergy' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
-            if doctor.department == 'Anesthesiologists':
-                if 'surgery' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
-            if doctor.department == 'Colon and Rectal Surgeons':
-                if 'cancer' in desc:
-                    pass
-                else:
-                    print('else')
-                    message="Please Choose Doctor According To Disease"
-                    return render(request,'hospital/patient_book_appointment.html',{'appointmentForm':appointmentForm,'patient':patient,'message':message})
-
+                pass
+            elif doctor.department == 'Dermatologists':
+                pass
+            elif doctor.department == 'Emergency Medicine Specialists':
+                pass
+            elif doctor.department == 'Allergists/Immunologists':
+                pass
+            elif doctor.department == 'Anesthesiologists':
+                pass
+            elif doctor.department == 'Colon and Rectal Surgeons':
+                pass
+            else:
+                print('else')
+                message = "Please Choose Doctor According To Specialty"
+                return render(
+                    request,
+                    'hospital/patient_book_appointment.html',
+                    {'appointmentForm': appointmentForm, 'patient': patient, 'message': message}
+                )
+                
 
 
 

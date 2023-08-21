@@ -1,4 +1,6 @@
-{% extends 'hospital/admin_base.html' %} {% block content %} {% load static %}
+{% extends 'hospital/admin_base.html' %}
+{% block content %}
+{% load static %}
 
 <head>
   <link
@@ -38,27 +40,36 @@
   </style>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const searchInput = document.getElementById("search-input");
-      const searchIcon = document.getElementById("search-icon");
-      const tableRows = document.querySelectorAll("#dev-table tbody tr");
-
-      function filterTableRows(searchTerm) {
-        const lowerCaseSearch = searchTerm.toLowerCase();
-        tableRows.forEach(function (row) {
-          const nameCell = row.querySelector("td:first-child");
-          if (nameCell.textContent.toLowerCase().includes(lowerCaseSearch)) {
-            row.style.display = "";
-          } else {
-            row.style.display = "none";
-          }
-        });
-      }
-
-      searchIcon.addEventListener("click", function () {
-        const searchTerm = searchInput.value;
-        filterTableRows(searchTerm);
+    $(document).ready(function () {
+      $("#search-icon").click(function () {
+        searchPatient();
       });
+
+      $("#search-input").keypress(function (e) {
+        if (e.which == 13) {
+          searchPatient();
+        }
+      });
+
+      function searchPatient() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("search-input");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("dev-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }
+        }
+      }
     });
   </script>
 </head>
@@ -89,7 +100,7 @@
       </thead>
       {% for p in patients %}
       <tr>
-        <td>{{p.get_name}}</td>
+        <td>{{ p.get_name }}</td>
         <td>
           <img
             src="{% static p.profile_pic.url %}"
@@ -98,20 +109,20 @@
             width="40px"
           />
         </td>
-        <td>{{p.symptoms}}</td>
-        <td>{{p.mobile}}</td>
-        <td>{{p.address}}</td>
+        <td>{{ p.symptoms }}</td>
+        <td>{{ p.mobile }}</td>
+        <td>{{ p.address }}</td>
         <td>
           <a
             class="btn btn-primary btn-xs"
-            href="{% url 'update-patient' p.id  %}"
+            href="{% url 'update-patient' p.id %}"
             ><span class="glyphicon glyphicon-edit"></span
           ></a>
         </td>
         <td>
           <a
             class="btn btn-danger btn-xs"
-            href="{% url 'delete-patient-from-hospital' p.id  %}"
+            href="{% url 'delete-patient-from-hospital' p.id %}"
             ><span class="glyphicon glyphicon-trash"></span
           ></a>
         </td>

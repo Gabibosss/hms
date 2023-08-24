@@ -2,11 +2,12 @@ from django.contrib import admin
 from django.urls import path
 from hospital import views
 from django.contrib.auth.views import LoginView, LogoutView
-
+from hospital.views import SearchResultsView
 
 # -------------FOR ADMIN RELATED URLS
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("search/", SearchResultsView.as_view(), name="admin_view_patient"),
     path('', views.home_view, name=''),
 
 

@@ -1,6 +1,4 @@
-{% extends 'hospital/admin_base.html' %}
-{% block content %}
-{% load static %}
+{% extends 'hospital/admin_base.html' %} {% block content %} {% load static %}
 
 <head>
   <link
@@ -22,20 +20,6 @@
 
     .row {
       margin: 100px;
-    }
-
-    .search-container {
-      /* position: absolute; */
-      top: 20px;
-      right: 20px;
-    }
-
-    .search-icon {
-      font-size: 20px;
-      margin-left: -30px;
-      position: relative;
-      top: 2px;
-      cursor: pointer;
     }
   </style>
 
@@ -74,12 +58,18 @@
   </script>
 </head>
 
-<form class="search-container" action="{% url 'admin_view_patient' %}" method="get">
-  <input id="search-input" name="q" type="text" placeholder="Search patient name">
-  <span
-    id="search-icon"
-    class="glyphicon glyphicon-search search-icon"
-  ></span>
+<form
+  class="search-container"
+  action="{% url 'admin_view_patient' %}"
+  method="get"
+>
+  <input
+    id="search-input"
+    name="q"
+    type="text"
+    placeholder="Search patient name"
+  />
+  <span id="search-icon" class="glyphicon glyphicon-search search-icon"></span>
 </form>
 <div class="container">
   <div class="panel panel-primary">

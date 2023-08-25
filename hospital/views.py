@@ -7,7 +7,19 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required,user_passes_test
 from datetime import datetime,timedelta,date
 from django.conf import settings
+from django.views.generic import TemplateView, ListView
+from django.db.models import Q
+from hospital.models import Patient
+class SearchResultsView(ListView):
+    model = Patient
+    template_name = "hospital/admin_view_patient.html"
 
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Patient.objects.filter(
+            Q(user__username__icontains=query) | Q(user__first_name__icontains=query)
+        )
+        return object_list
 #Create views here
 def home_view(request):
     if request.user.is_authenticated:
@@ -288,6 +300,7 @@ def admin_patient_view(request):
 @user_passes_test(is_admin)
 def admin_view_patient_view(request):
     patients=models.Patient.objects.all().filter(status=True)
+    print(patients,"----")
     return render(request,'hospital/admin_view_patient.html',{'patients':patients})
 
 

@@ -13,13 +13,17 @@ from hospital.models import Patient
 class SearchResultsView(ListView):
     model = Patient
     template_name = "hospital/admin_view_patient.html"
-
+    queryset = Patient.objects.all()
+    context_object_name = 'patient'
     def get_queryset(self):  # new
         query = self.request.GET.get("q")
-        object_list = Patient.objects.filter(
-            Q(user__username__icontains=query) | Q(user__first_name__icontains=query)
-        )
-        return object_list
+        if query is not None:
+            object_list = Patient.objects.filter(
+                Q(user__username__icontains=query) | Q(user__first_name__icontains=query)
+            )
+            print(object_list,'____')
+            return object_list
+        return Patient.objects.all()
 #Create views here
 def home_view(request):
     if request.user.is_authenticated:

@@ -10,6 +10,10 @@
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
   <style media="screen">
+    .search-container {
+      margin: 10px;
+      margin-left: 80%;
+    }
     a:link {
       text-decoration: none;
     }
@@ -59,19 +63,22 @@
 </head>
 
 <div class="container">
-<form
-  class="search-container"
-  action="{% url 'admin_view_patient' %}"
-  method="get"
->
-  <input
-    id="search-input"
-    name="q"
-    type="text"
-    placeholder="Search patient name"
-  />
-  <span id="search-icon" class="glyphicon glyphicon-search search-icon"></span>
-</form>
+  <form
+    class="search-container"
+    action="{% url 'admin_view_patient' %}"
+    method="get"
+  >
+    <input
+      id="search-input"
+      name="q"
+      type="text"
+      placeholder="Search patient name"
+    />
+    <span
+      id="search-icon"
+      class="glyphicon glyphicon-search search-icon"
+    ></span>
+  </form>
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h6 class="panel-title">Patient</h6>
